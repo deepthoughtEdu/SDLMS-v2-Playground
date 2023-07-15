@@ -1,4 +1,9 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable quotes */
+
 "use strict";
+
+
 
 const winston = require("winston");
 const nconf = require("nconf");
@@ -787,6 +792,14 @@ module.exports = function (app, middleware, controllers) {
 		controllers.widgets.reflections
 	);
 
-	const PAGES = ['dashboard','html','css','js','output'];
-	PAGES.forEach(name => setupPageRoute(app, "/widgets/dtpen/"+name+"/:id", middleware, middlewares, controllers.widgets['dtpen_'+name]));
+	setupPageRoute(
+		app,
+		"/testDashboard",
+		middleware,
+		middlewares,
+		controllers.parentDashboard.get
+	);
+
+	const PAGES = ['dashboard', 'html', 'css', 'js', 'output'];
+	PAGES.forEach(name => setupPageRoute(app, "/widgets/dtpen/" + name + "/:id", middleware, middlewares, controllers.widgets['dtpen_' + name]));
 };
