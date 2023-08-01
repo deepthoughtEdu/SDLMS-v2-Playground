@@ -2,7 +2,7 @@
 
 const nconf = require("nconf");
 const validator = require("validator");
-const winston = require("winston");
+// const winston = require('winston');
 
 const meta = require("../meta");
 const user = require("../user");
@@ -53,16 +53,17 @@ Controllers.sharer = require("./sharer");
 Controllers.microscope = require("./microscope");
 Controllers.dtThon = require("./write/dtThon");
 Controllers.quiz = require("./quiz");
-Controllers.dtthon = require("./dtthon");
+Controllers.dtthon = require("./DtThon");
 Controllers.article = require("./article");
 Controllers.mobile = require("./mobile");
 Controllers.utils = require("./utils");
 Controllers.cohort = require("./cohort");
 Controllers.assets = require("./assets/index");
 Controllers.curriculum = require("./curriculum");
+
 // Controllers.DtThon = require("./DtThon");
-Controllers.posterGenerator = require('./posterGenerator');
-Controllers.profile = require('./profile');
+Controllers.posterGenerator = require("./posterGenerator");
+Controllers.profile = require("./profile");
 Controllers.dtthon = require("./dtthon/index");
 Controllers.logger = require("./errorlogger");
 Controllers.articles_home = require("./articles");
@@ -70,8 +71,9 @@ Controllers.articlesApi = require("./articles/articles.api");
 Controllers.teaching_style = require("./teachingStyle");
 Controllers.widgets = require("./widgets");
 Controllers.dtpen = require("./dtpen");
+Controllers.vikramDashboard = require("./vikramDashboard");
 
-Controllers.applicationManager = require("./applicationManager")
+Controllers.applicationManager = require("./applicationManager");
 Controllers.reset = async function (req, res) {
 	if (meta.config["password:disableEdit"]) {
 		return helpers.notAllowed(req, res);
@@ -108,11 +110,11 @@ Controllers.reset = async function (req, res) {
 		req.session.reset_code = req.params.code;
 	}
 
-	if (req.session.reset_code == "password") {
+	if (req.session.reset_code === "password") {
 		// Validate and save to local variable before removing from session
 		// const valid = await user.reset.validate(req.session.reset_code);
 		let valid = false;
-		if (req.uid == 0) valid = true;
+		if (req.uid === 0) valid = true;
 		renderReset(req.session.reset_code, valid);
 		/**
 		 * @date 25-02-2022

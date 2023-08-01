@@ -223,7 +223,8 @@ module.exports = function (app, middleware, controllers) {
 				return next();
 			}
 			res.redirect(
-				`${nconf.get("relative_path")}/api/v3/users/${res.locals.uid
+				`${nconf.get("relative_path")}/api/v3/users/${
+					res.locals.uid
 				}/sessions/${req.params.uuid}`
 			);
 		}
@@ -277,6 +278,13 @@ module.exports = function (app, middleware, controllers) {
 		middleware,
 		middlewares,
 		controllers.parentDashboard.get
+	);
+	setupPageRoute(
+		app,
+		"/vikramDashboard",
+		middleware,
+		middlewares,
+		controllers.vikramDashboard.get
 	);
 	setupPageRoute(
 		app,
@@ -709,7 +717,7 @@ module.exports = function (app, middleware, controllers) {
 
 	setupPageRoute(
 		app,
-		'/posters/createprofile',
+		"/posters/createprofile",
 		middleware,
 		middlewares,
 		controllers.posterGenerator.createProfile
@@ -717,7 +725,7 @@ module.exports = function (app, middleware, controllers) {
 
 	setupPageRoute(
 		app,
-		'/posters/createprofile/:_id',
+		"/posters/createprofile/:_id",
 		middleware,
 		middlewares,
 		controllers.posterGenerator.createProfile
@@ -725,7 +733,7 @@ module.exports = function (app, middleware, controllers) {
 
 	setupPageRoute(
 		app,
-		'/posters/:page?',
+		"/posters/:page?",
 		middleware,
 		middlewares,
 		controllers.posterGenerator.getProcessedImages
@@ -733,7 +741,7 @@ module.exports = function (app, middleware, controllers) {
 
 	setupPageRoute(
 		app,
-		'/posters/:page?',
+		"/posters/:page?",
 		middleware,
 		middlewares,
 		controllers.posterGenerator.getProcessedImages
@@ -741,7 +749,7 @@ module.exports = function (app, middleware, controllers) {
 
 	setupPageRoute(
 		app,
-		'/generator/create/:title?/:description?',
+		"/generator/create/:title?/:description?",
 		middleware,
 		middlewares,
 		controllers.posterGenerator.templategenerator
@@ -749,7 +757,7 @@ module.exports = function (app, middleware, controllers) {
 
 	setupPageRoute(
 		app,
-		'/generator/list',
+		"/generator/list",
 		middleware,
 		middlewares,
 		controllers.posterGenerator.list
@@ -757,7 +765,7 @@ module.exports = function (app, middleware, controllers) {
 
 	setupPageRoute(
 		app,
-		'/generator/edit/:_id',
+		"/generator/edit/:_id",
 		middleware,
 		middlewares,
 		controllers.posterGenerator.editTemplate
@@ -765,12 +773,12 @@ module.exports = function (app, middleware, controllers) {
 
 	setupPageRoute(
 		app,
-		'/generator/generate/:_id',
+		"/generator/generate/:_id",
 		middleware,
 		middlewares,
 		controllers.posterGenerator.generate
 	);
-		
+
 	setupPageRoute(
 		app,
 		"/widgets/comments",
@@ -787,6 +795,14 @@ module.exports = function (app, middleware, controllers) {
 		controllers.widgets.reflections
 	);
 
-	const PAGES = ['dashboard','html','css','js','output'];
-	PAGES.forEach(name => setupPageRoute(app, "/widgets/dtpen/"+name+"/:id", middleware, middlewares, controllers.widgets['dtpen_'+name]));
+	const PAGES = ["dashboard", "html", "css", "js", "output"];
+	PAGES.forEach((name) =>
+		setupPageRoute(
+			app,
+			"/widgets/dtpen/" + name + "/:id",
+			middleware,
+			middlewares,
+			controllers.widgets["dtpen_" + name]
+		)
+	);
 };

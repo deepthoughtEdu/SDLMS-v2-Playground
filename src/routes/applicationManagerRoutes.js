@@ -1,28 +1,27 @@
-'use strict';
+"use strict";
 
-const winston = require('winston');
-const nconf = require('nconf');
+const winston = require("winston");
+const nconf = require("nconf");
 
-var helpers = require('./helpers');
+var helpers = require("./helpers");
 var setupPageRoute = helpers.setupPageRoute;
-const ENDPOINT = '/application';
+const ENDPOINT = "/application";
 const routes = {
-	PERSONA: ENDPOINT + '/persona',
-	ASSIGNMENT: ENDPOINT + '/assignment',
-	LEADERBOARD: ENDPOINT + '/leaderboard',
-	PROJECT: ENDPOINT + '/project',
-    DASHBOARD: ENDPOINT + '/dashboard',
+	PERSONA: ENDPOINT + "/persona",
+	ASSIGNMENT: ENDPOINT + "/assignment",
+	LEADERBOARD: ENDPOINT + "/leaderboard",
+	PROJECT: ENDPOINT + "/project",
+	DASHBOARD: ENDPOINT + "/dashboard",
 	LANDING: ENDPOINT + "/landing",
-	APPLICATION: ENDPOINT
-
-}
+	APPLICATION: ENDPOINT,
+};
 
 module.exports = function (app, middleware, controllers) {
 	var extendedMiddlewares = [
 		middleware.exposeUid,
 		middleware.canViewUsers,
-		middleware.requireLogin
-		];
+		middleware.requireLogin,
+	];
 
 	// setupPageRoute(
 	// 	app,
@@ -63,8 +62,8 @@ module.exports = function (app, middleware, controllers) {
 	// 	extendedMiddlewares,
 	// 	controllers.applicationmanager.admin.application
 	// );
-// console.log(controllers.applicationManager.dashboard.get)
-    setupPageRoute(
+	// console.log(controllers.applicationManager.dashboard.get)
+	setupPageRoute(
 		app,
 		`${routes.DASHBOARD}`,
 		middleware,
@@ -78,5 +77,4 @@ module.exports = function (app, middleware, controllers) {
 		extendedMiddlewares,
 		controllers.applicationManager.landing.get
 	);
-
-}
+};
