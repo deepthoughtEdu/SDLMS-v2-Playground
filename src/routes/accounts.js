@@ -211,6 +211,11 @@ module.exports = function (app, middleware, controllers) {
 		accountMiddlewares,
 		controllers.accounts.sessions.get
 	);
+	
+
+	
+
+
 	app.delete(
 		"/api/user/:userslug/session/:uuid",
 		[middleware.exposeUid],
@@ -280,6 +285,13 @@ module.exports = function (app, middleware, controllers) {
 	);
 	setupPageRoute(
 		app,
+		"/abhiDashboard",
+		middleware,
+		middlewares,
+		controllers.abhiDashboard.get
+	);
+	setupPageRoute(
+		app,
 		"/classes",
 		middleware,
 		middlewares,
@@ -299,6 +311,8 @@ module.exports = function (app, middleware, controllers) {
 		middlewares,
 		controllers.microscope.get
 	);
+
+	
 
 	// setupPageRoute(
 	// 	app,
