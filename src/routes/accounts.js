@@ -281,6 +281,13 @@ module.exports = function (app, middleware, controllers) {
 	);
 	setupPageRoute(
 		app,
+		"/vikramExplore",
+		middleware,
+		middlewares,
+		controllers.vikramExplore.get
+	);
+	setupPageRoute(
+		app,
 		"/vikramDashboard",
 		middleware,
 		middlewares,

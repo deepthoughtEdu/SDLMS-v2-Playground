@@ -88,6 +88,7 @@
     "nodebb-rewards-essentials": "0.1.4",
     "nodebb-widget-essentials": "5.0.2",
     "nodemailer": "^6.4.6",
+    "nodemon": "^3.0.1",
     "nprogress": "0.2.0",
     "passport": "^0.4.1",
     "passport-http-bearer": "^1.0.1",

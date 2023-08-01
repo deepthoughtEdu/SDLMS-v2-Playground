@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 "use strict";
 
 var nconf = require("nconf");
@@ -20,7 +21,7 @@ var helpers = require("./helpers");
 var applicationManager = require("./applicationManagerRoutes");
 var setupPageRoute = helpers.setupPageRoute;
 var profileRoutes = require("./profile");
-var DTvideoTechRoutes = require("./DTvideoTechPageRoutes");
+/* var DTvideoTechRoutes = require("./DTvideoTechPageRoutes"); */
 var dtpen = require("./dtpen");
 
 function mainRoutes(app, middleware, controllers) {

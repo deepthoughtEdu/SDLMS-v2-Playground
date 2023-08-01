@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable quotes */
 
 "use strict";
 
@@ -22,6 +23,6 @@ const vikramDashboardController = module.exports;
 
 vikramDashboardController.get = async function (req, res, next) {
 	var vikramDashboard = {};
-	vikramDashboard.title = "Vikram Dashboard";
+
 	res.render("sdlms/vikramDashboard", vikramDashboard);
 };
